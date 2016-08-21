@@ -1,0 +1,218 @@
+.nav.side-menu li{
+    cursor: pointer; 
+}
+
+.nav_menu{
+    display: none;
+}
+.profile{
+    display: block !important;
+}
+.mb-btn-disabled{
+    opacity: .2;
+    cursor: not-allowed;           
+}
+
+.site_title {
+
+    background-color: #748c8D;
+    height: 100%;
+}
+
+body.nav-sm .container.body .left_col {
+
+    background-color: #748c8D;
+}
+
+body.nav-sm ul.nav.child_menu {
+
+    background: #748c8D;
+}
+
+.nav.side-menu > li.active > a {
+
+    background: #748c8D;
+
+}
+
+.nav.side-menu > li.active {
+    border-right: #748c8D;
+}
+
+body.nav-sm .navbar.nav_title a i {
+
+    filter: contrast(1.4) saturate(1.8) sepia(.6);
+}
+
+body.nav-sm .navbar.nav_title a i:hover {
+    
+    filter: none;
+}
+
+                /*for other web*/
+
+.nav.side-menu > li.active {
+    border-right:#748c8D;
+}
+
+html, body {
+height: 100%;
+font: normal 14px/18px Noto Sans, Sans-Serif;
+ /*      font: 400 25px/30px Alright Sans, Sans-Serif;*/
+}
+
+.text-bg{
+
+    float:left;
+}
+
+.form-control::-moz-placeholder {
+    color: black;
+    opacity: 1;
+}
+
+/* entire container, keeps perspective */
+
+#templar {
+    font-family: Freestyle Script;
+    background-color: transparent;
+    font-size: 157%;
+}
+
+#templarLNO {
+    color: white;
+    font-size: 550%;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
+    background: #748c8D;
+    color: white;
+}
+
+.border-report{
+
+    border: solid;
+    border-color: white;
+    background: gainsboro;
+    padding-bottom: 21px;
+
+}
+
+.header-text-holder{
+
+    background: rgba(116, 140, 141 , 0.8); 
+    width: 50%;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
+    float: right;
+    width: 100%;
+    margin-left: 50px;
+    padding-left: 0%;
+    margin-top: 71px;
+    box-shadow: 10px 10px 5px #888888;
+}
+
+.magellan-logo{
+    background: url('{{$asset}}gentella/images/logo.png') no-repeat center;
+    width: 5%;
+    height:5%;
+
+}
+
+.logo-holder{
+
+    position: relative;
+    top: 18px;
+    right: 50px;
+    text-align:right;
+}
+
+.full-page-bg{
+
+    background: url('{{$asset}}gentella/images/fullpageimage.jpg') no-repeat center;
+    background-size: cover;
+}
+
+
+.green{
+
+    color:#748c8D;
+
+}
+
+.btn-primary, .btn-success{
+
+    width: 100%;
+    background-color: rgb(141, 117, 116);
+    border-color: rgb(141, 117, 116);
+
+}
+
+.btn-sm{
+
+    background-color: rgb(141, 117, 116);
+    border-color:  rgb(141, 117, 116);
+
+}
+
+.btn-sm:hover{
+
+    background-color: #748c8D;
+    border-color:  #748c8D;
+
+}
+
+.btn-primary:hover, .btn-success:hover{
+
+    width: 100%;
+    background-color: #748c8D;
+    border-color: #748c8D;
+
+}
+
+.flip-container, .front, .back {
+    width: 100%;
+    height: 170px;
+}
+
+table, th{
+
+    text-align: center;
+
+
+}
+
+.img-user{
+
+    width:50px;
+    max-height:50px;
+    border-radius:50% ;
+    width: 50px;
+    border: medium solid #8d7574;
+
+} 
+
+.pagination > .active > span{
+
+    background-color: #82748d;
+    border-color: #82748d;
+
+}
+
+
+.nav.side-menu > li.active {
+
+    background-color: rgb(116, 140, 141);
+}
+
+.child_menu{
+
+    background-color: rgb(116, 140, 141);
+}
+
+
+
+.nav.side-menu > li.active > a {
+    color: #ff0000;
+    text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
+    background: linear-gradient( rgb(116, 140, 141),  rgb(116, 140, 141)), rgb(116, 140, 141);
+}
+

@@ -1,0 +1,297 @@
+.nav.side-menu li{
+    cursor: pointer; 
+}
+
+.nav_menu{
+    display: none;
+}
+
+.ui-slider{
+
+    margin:10px;
+}
+
+.ui_tpicker_time_input, .ui_tpicker_timezone{
+
+    margin: 10px;
+    width: 91%;
+}
+
+.ui_tpicker_millisec_label, .ui_tpicker_microsec_label, .ui_tpicker_millisec_slider, .ui_tpicker_microsec_slider{
+
+    display:none;
+}
+
+.ui_tpicker_timezone > select{
+
+    width:100%;
+
+}
+
+th{
+  background-color: #d56540;
+  color: white;
+  text-align: center;
+}
+
+table{
+    color:black;
+
+}
+
+body.nav-sm .navbar.nav_title a i {
+
+    filter: none;
+}
+
+body.nav-sm .navbar.nav_title a i:hover {
+
+    filter: sepia(1);
+   
+}
+
+
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
+*, *:before, *:after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+section {
+  display: none;
+  padding: 20px 0 0;
+  border-top: 1px solid #ddd;
+}
+
+input {
+  display: none;
+}
+
+label {
+  display: inline-block; 
+  margin: 0 0 -1px;
+  padding: 15px 25px;
+  font-weight: 600;
+  text-align: center;
+  color: #bbb;
+  border: 1px solid transparent;
+}
+
+label:before {
+  font-family: fontawesome;
+  font-weight: normal;
+  margin-right: 10px;
+}
+
+label[for*='1']:before {
+  content: '\f15c';
+}
+
+label[for*='2']:before {
+  content: '\f0c5';
+}
+
+label[for*='3']:before {
+  content: '\f127';
+}
+
+label[for*='4']:before {
+  content: '\f025';
+}
+
+label:hover {
+  color: #888;
+  cursor: pointer;
+}
+
+input:checked + label {
+  color: #555;
+  border: 1px solid #ddd;
+  border-top: 2px solid #d56540;
+  border-bottom: 1px solid #fff;
+}
+.mb-btn-disabled{
+    opacity: .2;
+    cursor: not-allowed;           
+}
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2,
+#tab3:checked ~ #content3,
+#tab4:checked ~ #content4 {
+  display: block;
+}
+
+@media screen and (max-width: 650px) {
+
+  label {
+    font-size: 0;
+  }
+
+  label:before {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+}
+
+@media screen and (max-width: 400px) {
+  label {
+    padding: 15px;
+  }
+}
+
+body.nav-sm .container.body .left_col {
+
+    background-color: #d56540;
+}
+
+.site_title {
+
+    background-color: #d56540;
+    height: 100%;
+}
+
+body.nav-sm ul.nav.child_menu {
+
+    background: #d56540;
+}
+
+.nav.side-menu > li.active > a {
+
+    background: #d56540;
+
+}
+
+/*for other web*/
+
+.nav.side-menu > li.active {
+    border-right:#d56540;
+}
+
+  html, body {
+height: 100%;
+font: normal 14px/18px Noto Sans, Sans-Serif;
+ /*      font: 400 25px/30px Alright Sans, Sans-Serif;*/
+}
+
+.text-bg{
+
+    float:left;
+}
+
+.form-control::-moz-placeholder {
+    color: black;
+    opacity: 1;
+}
+
+/* entire container, keeps perspective */
+
+#templar {
+    font-family: Freestyle Script;
+    background-color: transparent;
+    font-size: 157%;
+}
+
+#templarLNO {
+    color: white;
+    font-size: 550%;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
+    background: #d56540;
+    color: white;
+}
+
+.border-report{
+
+    border: solid;
+    border-color: white;
+    background: gainsboro;
+    padding-bottom: 21px;
+
+}
+
+.header-text-holder{
+
+    background: rgba(225,112,75, 0.8);
+    width: 50%;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
+    float: right;
+    width: 100%;
+    margin-left: 50px;
+    padding-left: 0%;
+    margin-top: 71px;
+    box-shadow: 10px 10px 5px #888888;
+}
+
+.magellan-logo{
+    background: url('{{$asset}}gentella/images/logo.png') no-repeat center;
+    width: 5%;
+    height:5%;
+
+}
+
+.logo-holder{
+
+    position: relative;
+    top: 18px;
+    right: 50px;
+    text-align:right;
+}
+
+
+button[type="submit"]{
+
+    background-color: rgb(213, 101, 64);
+    border: medium none rgb(213, 101, 64);
+    width: 100%;
+
+}
+
+button[type="button"]{
+
+    background-color: #40b0d5;
+    border-color: #40b0d5;
+
+} 
+
+button[type="button"]:hover, button[type="submit"]:hover  {
+
+    background-color: rgb(213, 101, 64);
+    border-color: rgb(213, 101, 64);
+
+}
+
+table{
+
+    text-align: center;
+
+}
+
+.flip-container, .front, .back {
+    width: 100%;
+    height: 170px;
+}
+
+.fa-folder-open-o{
+    background-color:rgb(64, 176, 213);
+    border-color: rgb(64, 176, 213);
+}
+
+.pagination > .active > span{
+
+    background-color:#40d5b0;
+    border-color: #40d5b0;
+
+}
+
+
+.img-user{
+
+    width:50px;
+    max-height:50px;
+    border-radius:50% ;
+    width: 50px;
+    border: medium solid #40b0d5;
+
+}
