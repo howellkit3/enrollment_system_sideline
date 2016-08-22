@@ -42,10 +42,8 @@ $ctr = 0;?>
       <br>
 
       <div class="row">
-         @include('flash::message')
          <br>
         <div class="col-md-10 col-md-offset-1">
-
           <div class="table-responsive">
                <table id="mytable" class="display" cellspacing="0" width="100%">
                 <thead>

@@ -33,6 +33,7 @@ $ctr = 0;?>
 
               <input type="hidden" name="_method" value="POST">
               <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
+              <input type="hidden" id = "notifval" value="{{$auth->notif}}"> 
 
               <input type="hidden" name="id" value="{{$auth->id}}">
 
@@ -57,6 +58,12 @@ $ctr = 0;?>
                 <label for="exampleInputEmail1">Registration Date</label>
                 <input  class="form-control" name = "updated_at"  value = "{{$auth->created_at}}" aria-describedby="emailHelp" disabled>
               </div>
+
+              <div class="checkbox">
+              <label>
+                <input name ="notif" id = "notif"  type="checkbox"> Check me out if you want to receive an notification.
+              </label>
+            </div>
               
               <br>
 
@@ -85,28 +92,17 @@ $ctr = 0;?>
 
   $(document).ready(function() {
 
-    // Setup - add a text input to each footer cell
-    $('#mytable tfoot th').each( function () {
-        var title = $(this).text();
-        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
-    } );
- 
-    // DataTable
-    var table = $('#mytable').DataTable();
- 
-    // Apply the search
-    table.columns().every( function () {
-        var that = this;
- 
-        $( 'input', this.footer() ).on( 'keyup change', function () {
-            if ( that.search() !== this.value ) {
-                that
-                    .search( this.value )
-                    .draw();
-            }
-        } );
-    } );
-} );
+    notifval =  $('#notifval').val();
+
+    if(notifval == 'on'){
+
+      $('#notif').prop('checked', true);
+
+    }
+
+  });
+
+   
   </script>
 
 @endsection

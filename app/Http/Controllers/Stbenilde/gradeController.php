@@ -17,7 +17,24 @@ class gradeController extends Controller
 
 	 	$auth = Auth::user();
 
+	 	//print_r($auth); exit;
+
 	 	$grades = DB::table('tblgrades')->whereIn('studID', [$auth->studnum])->get(); 
+
+	 	$attendance_array = DB::table('tblattendance')
+	 		->whereIn('studID', [$auth->studnum])->get();
+
+
+	 	$subject_polish = array();
+		$date_polish = array();
+
+
+	 	foreach($attendance_array as $attendance_list){
+
+	 		$subject_raw = array_push($subject_polish,ucfirst($attendance_list->Subject));
+	 		$date_raw = array_push($date_polish,ucfirst(date("m-d-Y", strtotime($attendance_list->Date))));
+	 		 
+	 	}
 
 	 	$studenrolled = DB::table('tblstudenrolled')->get();
 

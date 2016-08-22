@@ -109,9 +109,9 @@
             <div class="menu_section">
               <h3>General</h3>
               <ul class="nav side-menu">
-              <li class="active"><a href="{{route('stbenilde.dashboard.index')}}"><i class="fa fa-sticky-note"></i>Index<span class="fa fa-chevron-down"></span></a></li>
                 <li class="active"><a><i class="fa fa-sticky-note"></i>Attendance<span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
+                    <li><a  href="{{route('stbenilde.dashboard.index')}}"><h3>Index</h3></a> 
                     <li><a ><h3>Subject</h3></a>
                       <ul class="nav child_menu" style="display: none">
                         @foreach ($subject as $subject_list)
@@ -136,23 +136,11 @@
     
                 <li class="active"><a><i class="fa fa-calculator"></i>Grades<span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
-                    <li><a href ="{{route('stbenilde.grade.index')}}">Index</a>
+                    <li><a href ="{{route('stbenilde.grade.index')}}"><h3>Index</h3></a>
                     </li>                    
                   </ul>
                 </li>
               
-
-                @if(in_array(Auth::user()->user_type,['admin']))
-                <li>
-                    <a><i class="fa fa-users"></i>Users<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu" style="display: none">
-                        <li>
-                            <a href="{{route('plumeria.user.index')}}">index</a>
-                        </li>                                      
-                    </ul>
-                </li> 
-                @endif
-
               </ul>
             </div>
 

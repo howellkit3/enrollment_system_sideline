@@ -13,13 +13,24 @@ $ctr = 0;?>
       height:200%;
     }
 
+    .center{
+
+      text-align: center;
+
+    }
+
+    .alert-success{
+
+      margin-top : 60px;
+    }
+
   </style>
 
 @section('content')
   <div class ="container">
     <div class="right_col" role="main">
       <div class="row top_tiles">
-
+        @include('flash::message')
         <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
           <div class="tile-stats">
             <div class="icon" style ="top:45;"><i class="fa fa-user"></i></div>
@@ -42,10 +53,13 @@ $ctr = 0;?>
       <br>
 
       <div class="row">
-         @include('flash::message')
+         
          <br>
-        <div class="col-md-10 col-md-offset-1">
 
+        <h1 class = "center">Data Entered</h1>
+
+        <br>
+        <div class="col-md-10 col-md-offset-1">
           <div class="table-responsive">
                <table id="mytable" class="display" cellspacing="0" width="100%">
                 <thead>
