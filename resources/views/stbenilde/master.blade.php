@@ -140,6 +140,13 @@
                     </li>                    
                   </ul>
                 </li>
+
+                <li class="active"><a><i class="fa fa-pencil"></i>Quizzes<span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu" style="display: none">
+                    <li><a href ="{{route('stbenilde.quiz.index')}}"><h3>Index</h3></a>
+                    </li>                    
+                  </ul>
+                </li>
               
               </ul>
             </div>

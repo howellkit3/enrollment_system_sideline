@@ -59,7 +59,7 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'host' => $ip,
-            'database' => 'stbenilde', 
+            'database' => 'monitoringsystem', 
             'username' => $username,
             'password' => $password,
             'charset' => 'utf8',

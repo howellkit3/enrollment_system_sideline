@@ -14,4 +14,8 @@ $this->group(['middleware' => ['web','auth'],'namespace' => 'stbenilde','middlew
 		$this->get('/',['as' => 'stbenilde.grade.index','uses' => 'gradeController@index']);
 	});
 
+	$this->group(['prefix' => 'quiz'],function(){
+		$this->get('/',['as' => 'stbenilde.quiz.index','uses' => 'quizController@index']);
+	});
+
 }); 

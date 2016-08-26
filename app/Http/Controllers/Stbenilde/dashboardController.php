@@ -18,7 +18,7 @@ class dashboardController extends Controller
 	 	$auth = Auth::user();
 
 	 	$attendance = DB::table('tblattendance')->whereIn('studID', [$auth->studnum])->get(); 
-
+	 
 	 	$studenrolled = DB::table('tblstudenrolled')->get();
 
 	 	$studname = DB::table('tblstudname')->whereIn('studID', [$auth->studnum])->get();

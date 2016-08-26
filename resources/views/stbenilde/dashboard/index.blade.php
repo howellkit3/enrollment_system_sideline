@@ -64,7 +64,6 @@ $ctr = 0;?>
                <table id="mytable" class="display" cellspacing="0" width="100%">
                 <thead>
                   <tr>
-                    <th class="column-title" style ="width:10%;"># </th>
                     <th class="column-title">Date </th>
                     <th class="column-title">Subject </th>
                     <th class="column-title">Status </th>
@@ -73,7 +72,6 @@ $ctr = 0;?>
 
                 <tfoot>
                     <tr>
-                      <th class="column-title"># </th>
                       <th class="column-title">Date</th>
                       <th class="column-title">Subject</th>
                       <th class="column-title">Status</th>
@@ -98,7 +96,6 @@ $ctr = 0;?>
                     @endif
 
                   <tr class="even pointer">
-                    <td id = "{{$attd_status}}">{{$ctr}}</td>
                     <td id = "{{$attd_status}}">{{$attendance_list->Date}}</td>
                     <td class="{{$attd_status}}">{{ucfirst($attendance_list->Subject)}}</td>
                     <td class="{{$attd_status}}">
