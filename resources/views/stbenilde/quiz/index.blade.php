@@ -1,5 +1,6 @@
 <?php $asset = URL::asset('/'); 
-$ctr = 0;?> 
+$ctr = 0;
+$total = 0;?> 
 @extends('stbenilde.master')
 
 @section('title', 'dashboard')
@@ -23,7 +24,7 @@ $ctr = 0;?>
         <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
           <div class="tile-stats">
             <div class="icon" style ="top:45;"><i class="fa fa-user"></i></div>
-            <div class="count">{{$studfullname}}</div>
+            <div class="count">{{substr($studfullname, 0, 20) }}..</div>
             <h3>{{$studid}}</h3>
             <p>Student Information</p>
           </div>
@@ -52,6 +53,7 @@ $ctr = 0;?>
                       <th class="column-title">Subject</th>
                       <th class="column-title">Score</th>
                       <th class="column-title">Total</th>
+                      <th class="column-title">Average</th>
                       <th class="column-title">Date</th>
                   </tr>
                 </thead>
@@ -62,6 +64,7 @@ $ctr = 0;?>
                       <th class="column-title">Subject</th>
                       <th class="column-title">Score</th>
                       <th class="column-title">Total</th>
+                      <th class="column-title">Average</th>
                       <th class="column-title">Date</th>
                     </tr>
                 </tfoot>
@@ -76,6 +79,13 @@ $ctr = 0;?>
                     <td id = "">{{$quiz_list->Subject}}</td>
                     <td id = "">{{$quiz_list->score}}</td>
                     <td id = "">{{$quiz_list->Total}}</td>
+                    <td>
+                    <?php
+                      $ave = ($quiz_list->score / $quiz_list->Total) * 100 ; 
+                      $total = $total + $ave;
+                    ?>
+                    {{round($ave,2)}} %
+                    </td>
                     <td id = "">{{$quiz_list->Date}}</td>
                   
                   </tr>
@@ -86,6 +96,16 @@ $ctr = 0;?>
               </table> 
               <br>
           </div>    
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+          <div class="row" style = "color:black; text-align:right;">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4"><h2>Total</h2>
+            </div>
+            <div class="col-md-4"><h2>{{round($total/$ctr,2)}} %</h2>
+            </div>
+          </div>
         </div>
     </div>
   </div>

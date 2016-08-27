@@ -1,5 +1,7 @@
 <?php $asset = URL::asset('/'); 
-$ctr = 0;?> 
+$ctr = 0;
+$grade = 0;
+$average = 0;?> 
 @extends('stbenilde.master')
 
 @section('title', 'dashboard')
@@ -23,7 +25,7 @@ $ctr = 0;?>
         <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
           <div class="tile-stats">
             <div class="icon" style ="top:45;"><i class="fa fa-user"></i></div>
-            <div class="count">{{$studfullname}}</div>
+            <div class="count">{{substr($studfullname, 0, 20) }}..</div>
             <h3>{{$studid}}</h3>
             <p>Student Information</p>
           </div>
@@ -64,8 +66,10 @@ $ctr = 0;?>
 
                 <tbody>
                   @foreach ($grades as $grade_list)
-                    <?php $ctr++;?>
+                    <?php $ctr++;
+                    $grade = $grade + $grade_list->Grade;
 
+                    ?>
                   @if($grade_list->Grade < 76)
                     <?php
                       $grade_status = "danger";
@@ -76,6 +80,8 @@ $ctr = 0;?>
                     ?>
 
                   @endif
+
+                  <?php $average = $grade/$ctr;?>
 
                   <tr class="even pointer">
                     <td id = "{{$grade_status}}">{{$grade_list->Term}}</td>
@@ -91,6 +97,15 @@ $ctr = 0;?>
               </table> 
               <br>
           </div>    
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+          <div class="row" style = "color:black; text-align:right;">
+            <div class="col-md-4"></div>
+            <div class="col-md-4"><h2>Average:</h2>
+            </div>
+            <div class="col-md-4"><h2>  {{round($average)}} %</h2>
+            </div>
+          </div>
         </div>
     </div>
   </div>

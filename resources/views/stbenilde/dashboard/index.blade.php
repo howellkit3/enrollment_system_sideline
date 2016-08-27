@@ -1,5 +1,7 @@
 <?php $asset = URL::asset('/'); 
-$ctr = 0;?> 
+$ctr = 0;
+$presentctr = 0;
+$absentctr = 0;?> 
 @extends('stbenilde.master')
 
 @section('title', 'dashboard')
@@ -34,7 +36,7 @@ $ctr = 0;?>
         <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
           <div class="tile-stats">
             <div class="icon" style ="top:45;"><i class="fa fa-user"></i></div>
-            <div class="count">{{$studfullname}}</div>
+            <div class="count">{{substr($studfullname, 0, 20) }}..</div>
             <h3>{{$studid}}</h3>
             <p>Student Information</p>
           </div>
@@ -56,7 +58,7 @@ $ctr = 0;?>
          
          <br>
 
-        <h1 class = "center">Data Entered</h1>
+        <h1 class = "center" >Data Entered</h1>
 
         <br>
         <div class="col-md-10 col-md-offset-1">
@@ -82,16 +84,18 @@ $ctr = 0;?>
 
                   @foreach ($attendance as $attendance_list)
                     <?php $ctr++;?>
-                    @if($attendance_list->Status == 'yes')
+                    @if($attendance_list->Status == 'Present')
                       <?php 
-                        $attendance_list->Status = 'present';
+                        $attendance_list->Status = 'Present';
                         $attd_status = " ";
+                        $presentctr ++; 
                       ?>
 
                     @else
                       <?php
-                        $attendance_list->Status = 'absent';
+                        $attendance_list->Status = 'Absent';
                         $attd_status = "danger";
+                        $absentctr ++; 
                       ?>
                     @endif
 
@@ -108,6 +112,16 @@ $ctr = 0;?>
               </table> 
               <br>
           </div>    
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+          <div class="row" style = "color:black; text-align:right;">
+            <div class="col-md-8"><h2>Total</h2>
+            </div>
+            <div class="col-md-2"><h2>Present : {{$presentctr}}</h2>
+            </div>
+            <div class="col-md-2"><h2>Absent :{{$absentctr}}</h2>
+            </div>
+          </div>
         </div>
     </div>
   </div>
