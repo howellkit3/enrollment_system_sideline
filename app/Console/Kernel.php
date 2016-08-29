@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use DB;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,7 +25,26 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        
+        $schedule->call(function () {
+
+                    $studinfo = DB::table('tblaccounts')->get();
+
+        foreach ($studinfo as $info_list):
+            // print_r(); exit;
+            DB::table('users')->insert([
+                'name' =>  $info_list->username,
+                'email' => $info_list->username .'@gmail.com',
+                'studnum' => $info_list->IDnum,
+                'active_stud_num' => $info_list->IDnum,
+                'password' => bcrypt($info_list->password),
+            ]);
+
+        endforeach;
+
+        })->dailyAt('02:38');
+
     }
+
+
 }

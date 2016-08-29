@@ -17,11 +17,11 @@ class dashboardController extends Controller
 
 	 	$auth = Auth::user();
 
-	 	$attendance = DB::table('tblattendance')->whereIn('studID', [$auth->studnum])->get(); 
+	 	$attendance = DB::table('tblattendance')->whereIn('studID', [$auth->active_stud_num])->get(); 
 	 
 	 	$studenrolled = DB::table('tblstudenrolled')->get();
 
-	 	$studname = DB::table('tblstudname')->whereIn('studID', [$auth->studnum])->get();
+	 	$studname = DB::table('tblstudname')->whereIn('studID', [$auth->active_stud_num])->get();
 
 	 	if(empty($studname)){
 
@@ -43,52 +43,39 @@ class dashboardController extends Controller
 		}
 
 	 	$subject_polish = array();
-		$date_polish = array();
 
 		foreach($attendance as $attendance_list){
 
 	 		$subject_raw = array_push($subject_polish,ucfirst($attendance_list->Subject));
-	 		$date_raw = array_push($date_polish,ucfirst(date("m-d-Y", strtotime($attendance_list->Date))));
 	 		 
 	 	}
 
 	 	$subject = array_unique($subject_polish); 
 
-	 	$date = array_unique($date_polish); 
-	 	$date = array_slice($date, -7);
-	 	
-
-	 	return view('stbenilde.dashboard.index',compact('attendance','auth','studfullname','studid','subject','date'));		
+	 	return view('stbenilde.dashboard.index',compact('attendance','auth','studfullname','studid','subject'));		
 
 	}  
 
 	public function changestudnum(){ 
 
 	 	$auth = Auth::user();
-
-
+	 	 
 	 	$attendance_array = DB::table('tblattendance')
-	 		->whereIn('studID', [$auth->studnum])->get();
+	 		->whereIn('studID', [$auth->active_stud_num])->get();
 
 	 	$subject_polish = array();
-		$date_polish = array();
 
 		foreach($attendance_array as $attendance_list){
 
 	 		$subject_raw = array_push($subject_polish,ucfirst($attendance_list->Subject));
-	 		$date_raw = array_push($date_polish,ucfirst(date("m-d-Y", strtotime($attendance_list->Date))));
 	 		 
 	 	}
 
 	 	$subject = array_unique($subject_polish); 
 
-	 	$date = array_unique($date_polish); 
-	 	$date = array_slice($date, -7);
-	 	
+	 	$studname = DB::table('tblstudname')->whereIn('studID', [$auth->active_stud_num])->get();
 
-	 	$studname = DB::table('tblstudname')->whereIn('studID', [$auth->studnum])->get();
-
-	 	return view('stbenilde.dashboard.changestudnum',compact('attendance','auth','subject','date'));	
+	 	return view('stbenilde.dashboard.changestudnum',compact('attendance','auth','subject'));	
 
 	}  
 
@@ -97,7 +84,7 @@ class dashboardController extends Controller
 
 		DB::table('users')
             ->where('id',$r->id)
-            ->update(['studnum' => $r->studnum,'notif' => $r->notif]);
+            ->update(['active_stud_num' => $r->studnum,'notif' => $r->notif]);
 
            // print_r($r->notif); exit;
 		
@@ -137,17 +124,12 @@ class dashboardController extends Controller
 		foreach($attendance_array as $attendance_list){
 
 	 		$subject_raw = array_push($subject_polish,ucfirst($attendance_list->Subject));
-	 		$date_raw = array_push($date_polish,ucfirst(date("m-d-Y", strtotime($attendance_list->Date))));
 	 		 
 	 	}
 
 	 	$subject = array_unique($subject_polish); 
 
-	 	$date = array_unique($date_polish); 
-	 	$date = array_slice($date, -7);
-
-
-	 	return view('stbenilde.dashboard.index',compact('attendance','auth','studfullname','studid','subject','date'));	
+	 	return view('stbenilde.dashboard.index',compact('attendance','auth','studfullname','studid','subject'));	
 
 	}  
 
@@ -156,37 +138,31 @@ class dashboardController extends Controller
 		$auth = Auth::user();
 
 	 	$attendance = DB::table('tblattendance')
-	 		->whereIn('studID', [$auth->studnum])
+	 		->whereIn('studID', [$auth->active_stud_num])
 	 		->whereIn('Subject', [$subject])->get(); 
 
 	 	$attendance_array = DB::table('tblattendance')
-	 		->whereIn('studID', [$auth->studnum])->get();
+	 		->whereIn('studID', [$auth->active_stud_num])->get();
 
 	 	$studenrolled = DB::table('tblstudenrolled')->get();
 
-	 	$studname = DB::table('tblstudname')->whereIn('studID', [$auth->studnum])->get();
+	 	$studname = DB::table('tblstudname')->whereIn('studID', [$auth->active_stud_num])->get();
 
 	 	$studfullname = ucfirst($studname[0]->FirstName) . " " . ucfirst($studname[0]->MiddleName) . " " . ucfirst($studname[0]->LastName);
 	 	
 	 	$studid = $studname[0]->studID;
 
 	 	$subject_polish = array();
-		$date_polish = array();
 
 		foreach($attendance_array as $attendance_list){
 
 	 		$subject_raw = array_push($subject_polish,ucfirst($attendance_list->Subject));
-	 		$date_raw = array_push($date_polish,ucfirst(date("m-d-Y", strtotime($attendance_list->Date))));
 	 		 
 	 	}
 
 	 	$subject = array_unique($subject_polish); 
 
-	 	$date = array_unique($date_polish); 
-	 	$date = array_slice($date, -7);
-	 	
-
-	 	return view('stbenilde.dashboard.index',compact('attendance','auth','studfullname','studid','subject','date'));	
+	 	return view('stbenilde.dashboard.index',compact('attendance','auth','studfullname','studid','subject'));	
 
 	}  
 
@@ -198,37 +174,31 @@ class dashboardController extends Controller
 		$auth = Auth::user();
 
 	 	$attendance = DB::table('tblattendance')
-	 		->whereIn('studID', [$auth->studnum])
+	 		->whereIn('studID', [$auth->active_stud_num])
 	 		->whereIn('Date', [$my_date])->get(); 
 
 	 	$attendance_array = DB::table('tblattendance')
-	 		->whereIn('studID', [$auth->studnum])->get();
+	 		->whereIn('studID', [$auth->active_stud_num])->get();
 
 	 	$studenrolled = DB::table('tblstudenrolled')->get();
 
-	 	$studname = DB::table('tblstudname')->whereIn('studID', [$auth->studnum])->get();
+	 	$studname = DB::table('tblstudname')->whereIn('studID', [$auth->active_stud_num])->get();
 
 	 	$studfullname = ucfirst($studname[0]->FirstName) . " " . ucfirst($studname[0]->MiddleName) . " " . ucfirst($studname[0]->LastName);
 	 	
 	 	$studid = $studname[0]->studID;
 
 	 	$subject_polish = array();
-		$date_polish = array();
 
 		foreach($attendance_array as $attendance_list){
 
 	 		$subject_raw = array_push($subject_polish,ucfirst($attendance_list->Subject));
-	 		$date_raw = array_push($date_polish,ucfirst(date("m-d-Y", strtotime($attendance_list->Date))));
 	 		 
 	 	}
 
 	 	$subject = array_unique($subject_polish); 
 
-	 	$date = array_unique($date_polish); 
-	 	$date = array_slice($date, -7);
-	 	
-
-	 	return view('stbenilde.dashboard.index',compact('attendance','auth','studfullname','studid','subject','date'));	
+	 	return view('stbenilde.dashboard.index',compact('attendance','auth','studfullname','studid','subject'));	
 
 	}  
 

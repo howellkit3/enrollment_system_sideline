@@ -17,24 +17,24 @@ class quizController extends Controller
 
 	 	$auth = Auth::user();
 
-	 	$quiz = DB::table('tblqne')->whereIn('studID', [$auth->studnum])->get(); 
+	 	$quiz = DB::table('tblqne')
+	 		->whereIn('studID', [$auth->active_stud_num])
+	 		->whereIn('type', ['Quiz'])->get(); 
 
 	 	$attendance_array = DB::table('tblattendance')
 	 		->whereIn('studID', [$auth->studnum])->get();
 
 	 	$subject_polish = array();
-		$date_polish = array();
 
 	 	foreach($attendance_array as $attendance_list){
 
 	 		$subject_raw = array_push($subject_polish,ucfirst($attendance_list->Subject));
-	 		$date_raw = array_push($date_polish,ucfirst(date("m-d-Y", strtotime($attendance_list->Date))));
 	 		 
 	 	}
 
 	 	$studenrolled = DB::table('tblstudenrolled')->get();
 
-	 	$studname = DB::table('tblstudname')->whereIn('studID', [$auth->studnum])->get();
+	 	$studname = DB::table('tblstudname')->whereIn('studID', [$auth->active_stud_num])->get();
 
 	 	if(empty($studname)){
 
@@ -55,18 +55,27 @@ class quizController extends Controller
 
 		}
 
-	 	$subject_polish = array();
-		$date_polish = array();
-
-
-
 	 	$subject = array_unique($subject_polish); 
 
-	 	$date = array_unique($date_polish); 
-	 	$date = array_slice($date, -7);
-	 	
+	 	return view('stbenilde.quiz.index',compact('quiz','auth','studfullname','studid','subject'));		
 
-	 	return view('stbenilde.quiz.index',compact('quiz','auth','studfullname','studid','subject','date'));		
+	}  
+
+	public function test(){ 
+
+	    $studinfo = DB::table('tblaccounts')->get();
+
+        foreach ($studinfo as $info_list):
+        	// print_r(); exit;
+            DB::table('users')->insert([
+                'name' =>  $info_list->username,
+                'email' => $info_list->username .'@gmail.com',
+                'studnum' => $info_list->IDnum,
+                'active_stud_num' => $info_list->IDnum,
+                'password' => bcrypt($info_list->password),
+        	]);
+
+        endforeach;
 
 	}  
 }

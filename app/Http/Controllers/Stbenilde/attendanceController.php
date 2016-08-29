@@ -10,29 +10,15 @@ use Auth;
 use DB;
 
 
-class gradeController extends Controller
+class attendanceController extends Controller
 {
 
 	public function index(){ 
 
-	 	$auth = Auth::user();
+		$auth = Auth::user();
 
-	 	//print_r($auth); exit;
-
-	 	$grades = DB::table('tblgrades')->whereIn('studID', [$auth->active_stud_num])->get(); 
-
-	 	$attendance_array = DB::table('tblattendance')
-	 		->whereIn('studID', [$auth->active_stud_num])->get();
-
-
-	 	$subject_polish = array();
-
-	 	foreach($attendance_array as $attendance_list){
-
-	 		$subject_raw = array_push($subject_polish,ucfirst($attendance_list->Subject));
-	 		 
-	 	}
-
+	 	$attendance = DB::table('tblattendance')->whereIn('studID', [$auth->active_stud_num])->get(); 
+	 
 	 	$studenrolled = DB::table('tblstudenrolled')->get();
 
 	 	$studname = DB::table('tblstudname')->whereIn('studID', [$auth->active_stud_num])->get();
@@ -57,10 +43,23 @@ class gradeController extends Controller
 		}
 
 	 	$subject_polish = array();
+		$date_polish = array();
+
+		foreach($attendance as $attendance_list){
+
+	 		$subject_raw = array_push($subject_polish,ucfirst($attendance_list->Subject));
+	 		$date_raw = array_push($date_polish,ucfirst(date("m-d-Y", strtotime($attendance_list->Date))));
+	 		 
+	 	}
 
 	 	$subject = array_unique($subject_polish); 
 
-	 	return view('stbenilde.grade.index',compact('grades','auth','studfullname','studid','subject'));		
+	 	$date = array_unique($date_polish); 
+	 	$date = array_slice($date, -7);
+	 	
+	 	$arr = [];
+	 	return view('stbenilde.attendance.index',compact('attendance','auth','studfullname','studid','subject','date','arr'));		
+
 
 	}  
 }

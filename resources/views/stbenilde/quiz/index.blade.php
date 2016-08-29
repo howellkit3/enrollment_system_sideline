@@ -47,6 +47,7 @@ $total = 0;?>
         <div class="col-md-10 col-md-offset-1">
           <div class="table-responsive">
                <table id="mytable" class="display" cellspacing="0" width="100%">
+               
                 <thead>
                   <tr>
                       <th class="column-title">Type</th>
@@ -57,17 +58,6 @@ $total = 0;?>
                       <th class="column-title">Date</th>
                   </tr>
                 </thead>
-
-                <tfoot>
-                    <tr>
-                      <th class="column-title">Type</th>
-                      <th class="column-title">Subject</th>
-                      <th class="column-title">Score</th>
-                      <th class="column-title">Total</th>
-                      <th class="column-title">Average</th>
-                      <th class="column-title">Date</th>
-                    </tr>
-                </tfoot>
 
                 <tbody>
                   @foreach ($quiz as $quiz_list)
@@ -103,7 +93,7 @@ $total = 0;?>
             </div>
             <div class="col-md-4"><h2>Total</h2>
             </div>
-            <div class="col-md-4"><h2>{{round($total/$ctr,2)}} %</h2>
+            <div class="col-md-4"><h2>{{($ctr = 0) ? round($total/$ctr,2) : 0 }} %</h2>
             </div>
           </div>
         </div>

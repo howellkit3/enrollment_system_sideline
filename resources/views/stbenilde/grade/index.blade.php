@@ -56,14 +56,6 @@ $average = 0;?>
                   </tr>
                 </thead>
 
-                <tfoot>
-                    <tr>
-                      <th class="column-title">Term</th>
-                      <th class="column-title">Subject</th>
-                      <th class="column-title">Grade</th>
-                    </tr>
-                </tfoot>
-
                 <tbody>
                   @foreach ($grades as $grade_list)
                     <?php $ctr++;

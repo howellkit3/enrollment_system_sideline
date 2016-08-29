@@ -25,9 +25,13 @@ $ctr = 0;?>
 
             <br>
 
-            <h1>Change Student Number</h1>
+            <h1>Switch Account</h1>
 
             <br>
+
+            <div class="form-group">
+              <label><I>Change Student Number to switch with another Student's Data</I></label>
+            </div>
 
             <form class="form-horizontal form-label-left " method="post" action="{{route('stbenilde.dashboard.updatestudnum')}}">
 
@@ -50,8 +54,8 @@ $ctr = 0;?>
 
               <div class="form-group">
                 <label for="exampleInputEmail1">Student Number</label>
-                <input  class="form-control" name = "studnum" value = "{{$auth->studnum}}" aria-describedby="emailHelp" style ="background:white;">
-                <small id="emailHelp" class="form-text text-muted">Please check your child's Student Number.</small>
+                <input  class="form-control" name = "studnum" value = "{{$auth->active_stud_num}}" aria-describedby="emailHelp" style ="background:white;">
+                <small id="emailHelp" class="form-text text-muted">Change this to see another student acount.</small>
               </div>
 
               <div class="form-group">
@@ -67,10 +71,6 @@ $ctr = 0;?>
               
               <br>
 
-              <div class="form-group">
-                <label><I>Change Student number can be used especially for those Guardians who have more than one student in our school. We are happy to serve you.</I></label>
-              </div>
-              <br>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
@@ -83,10 +83,8 @@ $ctr = 0;?>
 
 @section('header-scripts')
   
-<!--   <script src="{{$asset}}gentella/js/datatables/jquery.min.js"></script> -->
   <script src="{{$asset}}gentella/js/jquery-1.12.3.js"></script>
   <script src="{{$asset}}gentella/js/datatables/jquery-10.dataTables.min.js"></script>
-
 
   <script>
 

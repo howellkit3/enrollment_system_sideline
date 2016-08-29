@@ -10,12 +10,21 @@ $this->group(['middleware' => ['web','auth'],'namespace' => 'stbenilde','middlew
 		$this->get('/attn_date/{id}',['as' => 'stbenilde.dashboard.attn_date','uses' => 'dashboardController@attn_date']);
 	});
 
+	$this->group(['prefix' => 'attendance'],function(){
+		$this->get('/',['as' => 'stbenilde.attendance.index','uses' => 'attendanceController@index']);
+	});
+
 	$this->group(['prefix' => 'grade'],function(){
 		$this->get('/',['as' => 'stbenilde.grade.index','uses' => 'gradeController@index']);
 	});
 
 	$this->group(['prefix' => 'quiz'],function(){
 		$this->get('/',['as' => 'stbenilde.quiz.index','uses' => 'quizController@index']);
+		$this->get('/test',['as' => 'stbenilde.quiz.test','uses' => 'quizController@test']);
+	});
+
+	$this->group(['prefix' => 'exam'],function(){
+		$this->get('/',['as' => 'stbenilde.exam.index','uses' => 'examController@index']);
 	});
 
 }); 

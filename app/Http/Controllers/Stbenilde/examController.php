@@ -10,20 +10,19 @@ use Auth;
 use DB;
 
 
-class gradeController extends Controller
+class examController extends Controller
 {
 
 	public function index(){ 
 
 	 	$auth = Auth::user();
 
-	 	//print_r($auth); exit;
-
-	 	$grades = DB::table('tblgrades')->whereIn('studID', [$auth->active_stud_num])->get(); 
+	 	$quiz = DB::table('tblqne')
+	 		->whereIn('studID', [$auth->active_stud_num])
+	 		->whereIn('type', ['Exam'])->get(); 
 
 	 	$attendance_array = DB::table('tblattendance')
-	 		->whereIn('studID', [$auth->active_stud_num])->get();
-
+	 		->whereIn('studID', [$auth->studnum])->get();
 
 	 	$subject_polish = array();
 
@@ -56,11 +55,9 @@ class gradeController extends Controller
 
 		}
 
-	 	$subject_polish = array();
-
 	 	$subject = array_unique($subject_polish); 
 
-	 	return view('stbenilde.grade.index',compact('grades','auth','studfullname','studid','subject'));		
+	 	return view('stbenilde.exam.index',compact('quiz','auth','studfullname','studid','subject'));		
 
 	}  
 }

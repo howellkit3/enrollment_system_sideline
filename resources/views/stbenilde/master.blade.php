@@ -17,11 +17,13 @@
   <link href="{{$asset}}gentella/fonts/css/font-awesome.min.css" rel="stylesheet">
   <link href="{{$asset}}gentella/css/animate.min.css" rel="stylesheet">
   <link href="{{$asset}}gentella/css/custom.css" rel="stylesheet">
+  <link href="{{$asset}}gentella/css/icheck/flat/green.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{$asset}}gentella/css/maps/jquery-jvectormap-2.0.3.css" />
   <link href="{{$asset}}gentella/css/icheck/flat/green.css" rel="stylesheet" />
   <link href="{{$asset}}gentella/css/floatexamples.css" rel="stylesheet" type="text/css" />
   <script src="{{$asset}}gentella/js/jquery.min.js"></script>
   <script src="{{$asset}}gentella/js/nprogress.js"></script>
+
   @yield('header-scripts')
     <style type="text/css">
 
@@ -111,7 +113,7 @@
               <ul class="nav side-menu">
                 <li class="active"><a><i class="fa fa-sticky-note"></i>Attendance<span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
-                    <li><a  href="{{route('stbenilde.dashboard.index')}}"><h3>Index</h3></a> 
+                    <li><a  href="{{route('stbenilde.attendance.index')}}"><h3>Index</h3></a> 
                     <li><a ><h3>Subject</h3></a>
                       <ul class="nav child_menu" style="display: none">
                         @foreach ($subject as $subject_list)
@@ -121,31 +123,16 @@
 
                       </ul>
                     </li> 
-
-                    <li><a ><h3>Date</h3></a>
-                      <ul class="nav child_menu" style="display: none">
-                        @foreach ($date as $date_list)
-
-                          <li><a href ="{{route('stbenilde.dashboard.attn_date',$date_list)}}">{{ucfirst($date_list)}}</a></li>
-
-                        @endforeach
-                      </ul>
-                    </li> 
                   </ul>
                 </li>
     
-                <li class="active"><a><i class="fa fa-calculator"></i>Grades<span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu" style="display: none">
-                    <li><a href ="{{route('stbenilde.grade.index')}}"><h3>Index</h3></a>
-                    </li>                    
-                  </ul>
+                <li class="active"><a href ="{{route('stbenilde.grade.index')}}"><i class="fa fa-calculator"></i>Grades<span class="fa fa-chevron-down"></span></a>
                 </li>
 
-                <li class="active"><a><i class="fa fa-pencil"></i>Quizzes and Exams<span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu" style="display: none">
-                    <li><a href ="{{route('stbenilde.quiz.index')}}"><h3>Index</h3></a>
-                    </li>                    
-                  </ul>
+                <li class="active"><a href ="{{route('stbenilde.quiz.index')}}"><i class="fa fa-pencil"></i>Quizzes<span class="fa fa-chevron-down"></span></a>
+                </li>
+
+                <li class="active"><a href ="{{route('stbenilde.exam.index')}}"><i class="fa fa-pencil"></i>Exam<span class="fa fa-chevron-down"></span></a>
                 </li>
               
               </ul>
@@ -175,9 +162,9 @@
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
-                  <li><a href="{{url('/logout')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
-<!--                   <li><a href="{{route('stbenilde.dashboard.changestudnum')}}"><i class="fa fa-user pull-right"></i> Change Student Number</a>
-                  </li> -->
+                  <li><a href="{{url('/logout')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  <li><a href="{{route('stbenilde.dashboard.changestudnum')}}"><i class="fa fa-user pull-right"></i>Switch Account</a>
+                  </li>
                 </ul>
               </li>
 
