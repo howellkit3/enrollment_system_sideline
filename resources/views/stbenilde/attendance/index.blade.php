@@ -22,9 +22,6 @@
 
   <style>
 
-    .right_col {
-      height:200%;
-    }
 
     .center{
 
@@ -63,22 +60,47 @@
     <link href="{{$asset}}gentella/css/calendar/fullcalendar.css" rel="stylesheet">
     <link href="{{$asset}}gentella/css/calendar/fullcalendar.print.css" rel="stylesheet" media="print">
     <style type="text/css">
+
     .cchart{
         padding: 5px;
         background-color: #0F9D58; 
         border-radius: 1px;
         color: #fff;     
     }
+
     .fst{
         background-color: #ee8823;
     }
+
     .ptd{
         background-color: #589796;
     }
+
     #calendar{
         margin-top: 11px;
     }
+
+    .fc-event-container{
+
+        text-align:center;
+
+    }
+
+    .fc-widget-header{
+
+        background-color: rgb(100, 100, 100);
+    }
+
+/*    .fc-title{
+        display:none;
+    }
+
+    .fc-event-container > a{
+        display:none;
+    }*/
+
     </style>
+
 @endsection
 
 @section('footer-scripts')
@@ -86,16 +108,17 @@
 <script src="{{$asset}}gentella/js/moment/moment.min.js"></script>
 <script src="{{$asset}}gentella/js/calendar/fullcalendar.min.js"></script>
 
-         <script>
-            $(window).load(function () {
+    <script>
+
+        $(window).load(function () {
 
         var date = new Date();
         var d = date.getDate();
         var m = date.getMonth();
         var y = date.getFullYear();
 
-        var data = 's';
-        console.log(data);
+        var data = {!!$arr!!};
+
         var started;
         var categoryClass;
 
@@ -116,7 +139,6 @@
     });
 
 </script>
+
 @endsection
 
-
-  

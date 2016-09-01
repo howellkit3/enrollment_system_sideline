@@ -18,6 +18,8 @@ class attendanceController extends Controller
 		$auth = Auth::user();
 
 	 	$attendance = DB::table('tblattendance')->whereIn('studID', [$auth->active_stud_num])->get(); 
+
+	 //	print_r($attendance); exit;
 	 
 	 	$studenrolled = DB::table('tblstudenrolled')->get();
 
@@ -56,11 +58,39 @@ class attendanceController extends Controller
 
 	 	$date = array_unique($date_polish); 
 	 	$date = array_slice($date, -7);
-	 	
+
 	 	$arr = [];
+		$arr2 = [];
+
+		foreach ($attendance as $v) {
+		
+
+			if($v->Status =='Absent'){
+
+				$color = '#FFABAB';
+			}else{
+				$color = '#6EB5FF';
+
+	
+		// /	print_r( $v->Date); exit; 
+
+			$date = strtr( $v->Date, '/', '-');
+			$newDate = date("Y-m-d", strtotime($date));
+			$arr2[] = [
+			'title' => $v->Status,
+		
+			'start' => '2016/9/1 5:00 ',
+			'end' => '2016/9/1 23:00 ',
+			'color'  => $color,
+			'url' => '/rosebud/schedule/show/'
+			];				
+		
+		}
+	 	
+	 	$arr = json_encode($arr2);
 	 	return view('stbenilde.attendance.index',compact('attendance','auth','studfullname','studid','subject','date','arr'));		
 
-
+	 }
 	}  
 }
     
