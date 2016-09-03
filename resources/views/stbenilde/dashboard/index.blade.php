@@ -30,26 +30,8 @@ $absentctr = 0;?>
 
 @section('content')
   <div class ="container">
-    <div class="right_col" role="main">
       <div class="row top_tiles">
-        @include('flash::message')
-        <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
-          <div class="tile-stats">
-            <div class="icon" style ="top:45;"><i class="fa fa-user"></i></div>
-            <div class="count">{{substr($studfullname, 0, 20) }}..</div>
-            <h3>{{$studid}}</h3>
-            <p>Student Information</p>
-          </div>
-        </div>
 
-        <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
-          <div class="tile-stats">
-            <div class="icon" style ="top:45;"><i class="fa fa-calendar"></i></div>
-            <div class="count">{{date("Y-m-d")}}</div>
-            <h3>{{date("h:i")}}</h3>
-            <p>Data generated as of</p>
-          </div>
-        </div>
       </div>
 
       <br>
@@ -114,8 +96,7 @@ $absentctr = 0;?>
             <div class="col-md-2"><h2>Absent :{{$absentctr}}</h2>
             </div>
           </div>
-        </div>
-    </div>
+          </div>
   </div>
 
 

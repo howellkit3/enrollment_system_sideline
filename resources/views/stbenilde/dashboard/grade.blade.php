@@ -17,7 +17,6 @@ $ctr = 0;?>
 
 @section('content')
   <div class ="container">
-    <div class="right_col" role="main">
       <br>
       <div class="row">
         
@@ -67,7 +66,6 @@ $ctr = 0;?>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
-    </div>
   </div>
 
 

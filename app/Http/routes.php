@@ -18,6 +18,10 @@ Route::group(['middleware' => ['web','auth']],function(){
 		return redirect()->route('stbenilde.dashboard.index');
 	});
 
+	$this->get('/test', function () { 
+		return redirect()->route('stbenilde.dashboard.test');
+	});
+
 
 });
 

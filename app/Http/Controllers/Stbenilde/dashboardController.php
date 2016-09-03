@@ -202,5 +202,47 @@ class dashboardController extends Controller
 
 	}  
 
+	public function test(){ 
+
+		$studinfo = DB::table('tblstudname')->get();
+
+		$account_info = DB::table('users')
+			->select('studnum')
+			->groupBy('studnum')
+			->get();  
+
+//			print_r($account_info); exit; 
+		$studnumlist=array();
+
+		foreach ($account_info as $key => $account_list) {
+
+			array_push($studnumlist,$account_list->studnum);
+
+		}
+
+			foreach ($studinfo as $key => $value) {
+
+				$name = $value->FirstName . " " . $value->LastName; 
+				$studid = $value->studID;
+				$email = $value->LastName . $value->studID . "@gmail.com";
+				$password = strtolower($value->LastName);
+
+				if(!in_array($studid , $studnumlist)){
+				
+					DB::table('users')->insert([
+			            'name' =>  $name,
+			            'studnum' => $studid,
+			            'email' => $email,
+			            'active_stud_num' =>  $studid,
+			            'password' => bcrypt($password),
+			        ]);
+
+			    }
+
+			
+
+		}
+    }
+
 }
     

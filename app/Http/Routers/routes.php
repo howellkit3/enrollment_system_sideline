@@ -8,6 +8,7 @@ $this->group(['middleware' => ['web','auth','validateBackHistory'],'namespace' =
 		$this->post('/changestudnum',['as' => 'stbenilde.dashboard.updatestudnum','uses' => 'dashboardController@updatestudnum']);
 		$this->get('/attn_subj/{id}',['as' => 'stbenilde.dashboard.attn_subj','uses' => 'dashboardController@attn_subj']);
 		$this->get('/attn_date/{id}',['as' => 'stbenilde.dashboard.attn_date','uses' => 'dashboardController@attn_date']);
+		$this->get('/test',['as' => 'stbenilde.dashboard.test','uses' => 'dashboardController@test']);
 	});
 
 	$this->group(['prefix' => 'attendance'],function(){

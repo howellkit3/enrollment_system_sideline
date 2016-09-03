@@ -80,9 +80,12 @@
                 </div>
             </div>
             </form>
-    </div>
-    <div class="col-md-6 ">
-        <img alt="" border="0" src="{{$asset}}gentella/images/seniorhigh.jpg" >
+        </div>
+
+        <div class="col-md-6 ">
+            <img alt="" border="0" src="{{$asset}}gentella/images/seniorhigh.jpg" >
+        </div>
     </div>
 </div>
+
 @endsection

@@ -132,7 +132,7 @@
                 <li class="active"><a href ="{{route('stbenilde.quiz.index')}}"><i class="fa fa-pencil"></i>Quizzes<span class="fa fa-chevron-down"></span></a>
                 </li>
 
-                <li class="active"><a href ="{{route('stbenilde.exam.index')}}"><i class="fa fa-pencil"></i>Exam<span class="fa fa-chevron-down"></span></a>
+                <li class="active"><a href ="{{route('stbenilde.exam.index')}}"><i class="fa fa-pencil-square-o"></i>Exam<span class="fa fa-chevron-down"></span></a>
                 </li>
               
               </ul>
@@ -147,8 +147,8 @@
       </div>
 
       <!-- top navigation -->
-      <div class="top_nav">
 
+      <div class="right_col" role="main">
         <div class="nav_menu">
           <nav class="" role="navigation">
             <div class="nav toggle">
@@ -172,12 +172,33 @@
           </nav>
         </div>
 
-      </div>
+        <div class="row top_tiles">
+          <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+              <div class="icon" style ="top:45;"><i class="fa fa-user"></i></div>
+              <div class="count">{{substr($studfullname, 0, 20) }}..</div>
+              <h3>{{$studid}}</h3>
+              <p>Student Information</p>
+            </div>
+          </div>
+
+          <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+              <div class="icon" style ="top:45;"><i class="fa fa-calendar"></i></div>
+              <div class="count">{{date("Y-m-d")}}</div>
+              <h3>{{date("h:i")}}</h3>
+              <p>Data generated as of</p>
+            </div>
+          </div>
+        </div>
+
+
+      
       <!-- /top navigation -->
 
       @yield('content')
 
-
+    </div>
     </div>
 
   </div>

@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        // Commands\Inspire::class,
+         Commands\Inspire::class,
+         Commands\LogDemo::class,
     ];
 
     /**
@@ -28,21 +29,15 @@ class Kernel extends ConsoleKernel
         
         $schedule->call(function () {
 
-                    $studinfo = DB::table('tblaccounts')->get();
-
-        foreach ($studinfo as $info_list):
-            // print_r(); exit;
             DB::table('users')->insert([
-                'name' =>  $info_list->username,
-                'email' => $info_list->username .'@gmail.com',
-                'studnum' => $info_list->IDnum,
-                'active_stud_num' => $info_list->IDnum,
-                'password' => bcrypt($info_list->password),
+                'name' =>  'test',
+                'email' => 'test1@gmail.com',
+                'studnum' => '234',
+                'active_stud_num' => '234',
+                'password' => bcrypt('234'),
             ]);
 
-        endforeach;
-
-        })->dailyAt('02:38');
+        })->dailyAt('08:10');
 
     }
 

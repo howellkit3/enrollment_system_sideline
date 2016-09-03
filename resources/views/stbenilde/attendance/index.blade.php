@@ -29,18 +29,13 @@
 
     }
 
-    .alert-success{
-
-      margin-top : 60px;
-    }
 
   </style>
 
 @section('content')
 
 <div class ="container">
-    <div class="right_col" role="main">
-         <div id="page-wrapper">
+    <div id="page-wrapper">
         <div class="row">
             <div class="col-md-12">
                 <div class="x_content">
@@ -48,8 +43,6 @@
                 </div>
             </div>
         </div>
-
-    </div>
     </div>
 </div>
 
@@ -90,14 +83,6 @@
 
         background-color: rgb(100, 100, 100);
     }
-
-/*    .fc-title{
-        display:none;
-    }
-
-    .fc-event-container > a{
-        display:none;
-    }*/
 
     </style>
 
