@@ -1,6 +1,6 @@
 <?php 
 
-$this->group(['middleware' => ['web','auth'],'namespace' => 'stbenilde','middleware' => ['web']],function(){
+$this->group(['middleware' => ['web','auth','validateBackHistory'],'namespace' => 'stbenilde','middleware' => ['web','validateBackHistory']],function(){
 	
 	$this->group(['prefix' => 'dashboard'],function(){
 		$this->get('/',['as' => 'stbenilde.dashboard.index','uses' => 'dashboardController@index']);
