@@ -19,6 +19,8 @@ $average = 0;?>
 
 @section('content')
   <div class ="container">
+    <h3>Grades</h3>
+    <div class="x_panel">
       <div class="row">
          <br>
         <div class="col-md-10 col-md-offset-1">
@@ -77,6 +79,7 @@ $average = 0;?>
             </div>
           </div>
         </div>
+      </div>
   </div>
 
 

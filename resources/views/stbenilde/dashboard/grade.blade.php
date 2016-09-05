@@ -17,6 +17,8 @@ $ctr = 0;?>
 
 @section('content')
   <div class ="container">
+    <h3>Grade</h3>
+    <div class="x_panel">
       <br>
       <div class="row">
         
@@ -66,6 +68,7 @@ $ctr = 0;?>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
+      </div>
   </div>
 
 

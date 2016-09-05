@@ -18,8 +18,8 @@ $total = 0;?>
 
 @section('content')
   <div class ="container">
-
-
+    <div class="x_panel">
+       <h3>Exams</h3>
       <div class="row">
          <br>
         <div class="col-md-10 col-md-offset-1">
@@ -74,6 +74,7 @@ $total = 0;?>
             </div>
           </div>
         </div>
+      </div>
   </div>
 
 

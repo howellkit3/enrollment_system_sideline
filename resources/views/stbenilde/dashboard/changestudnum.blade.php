@@ -17,16 +17,11 @@ $ctr = 0;?>
 
 @section('content')
   <div class ="container">
-  
+    <h3>Switch Account</h3>
+    <div class="x_panel">
       <div class="row">
         
         <div class="col-md-10 col-md-offset-1">
-
-            <br>
-
-            <h1>Switch Account</h1>
-
-            <br>
 
             <div class="form-group">
               <label><I>Change Student Number to switch with another Student's Data</I></label>
@@ -74,7 +69,7 @@ $ctr = 0;?>
             </form>
             <br><br><br><br>
         </div>
-
+    </div>
   </div>
 
 

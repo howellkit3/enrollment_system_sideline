@@ -71,6 +71,34 @@
 
       }
 
+      .header{
+
+        background: url('{{$asset}}gentella/images/stbenilde-header.jpg') no-repeat center;
+        text-align: center;
+        background-size: cover;
+        border: solid;
+        border: solid;
+        height: 150px;
+
+      }
+
+      .logo{
+
+        width: 90%;
+        margin: 10px;
+      }
+
+      .header-mask{
+
+        height: 100%;
+        background-color: rgba(0,0,0,.3);
+      }
+
+     .nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+      background-color: transparent;
+      border-color: #337ab7;
+  }
+
 
     </style> 
 </head>
@@ -79,22 +107,17 @@
 <body class="nav-md">
 
   <div class="container body">
-
-
     <div class="main_container">
-
       <div class="col-md-3 left_col">
         <div class="left_col scroll-view"> 
 
-          <div class="navbar nav_title" style="border: 0;">
-            <a href="{{route('stbenilde.dashboard.index')}}" class="site_title"><i class="fa fa-university"></i> <span>Saint Benilde College</span></a>
-          </div>
+          <br>
           <div class="clearfix"></div>
 
           <!-- menu prile quick info -->
           <div class="profile">
             <div class="profile_pic">
-              <img src="{{$asset}}gentella/images/img.jpg" alt="..." class="img-circle profile_img">
+               <img class ="logo" alt="" border="0" src="{{$asset}}gentella/images/stbenilde.png" >
             </div>
             <div class="profile_info">
               <span>Welcome,</span>
@@ -152,7 +175,7 @@
       <!-- top navigation -->
 
       <div class="right_col" role="main">
-        <div class="nav_menu">
+<!--         <div class="nav_menu">
           <nav class="" role="navigation">
             <div class="nav toggle">
               <a id="menu_toggle"><i class="fa fa-bars"></i></a>
@@ -179,9 +202,51 @@
 
             </ul>
           </nav>
+        </div> -->
+
+        <div class="row header">
+          <nav class="" role="navigation">
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fa fa-bars" style ="color:white;"></i></a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span style ="color:white;">
+                  {{Auth::user()->name}} ({{$studid}})</span>
+                  <span style ="color:white"class=" fa fa-angle-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
+                  <li><a href="{{url('/logout')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  <li><a href="{{route('stbenilde.dashboard.changestudnum')}}"><i class="fa fa-user pull-right"></i>Switch Account</a>
+                  </li>
+
+                  @if(Auth::user()->status == 'admin')
+                  <li><a href="{{route('stbenilde.dashboard.admin')}}"><i class="fa fa-laptop pull-right"></i>Admin</a>
+                  </li>
+                  @endif
+
+                </ul>
+              </li>
+
+            </ul>
+          </nav>
+          <div class ="header-mask">
+            <br>
+            <div class="col-md-6 ">
+              
+              <img style ="width: 170px;" class ="logo" alt="" border="0" src="{{$asset}}gentella/images/educated.png" >
+            </div>
+            <div class="col-md-6 ">
+                          
+            </div>
+             
+          
+            
+          </div>
         </div>
 
-        <div class="row top_tiles">
+<!--         <div class="row top_tiles">
           <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="tile-stats">
               <div class="icon" style ="top:45;"><i class="fa fa-user"></i></div>
@@ -199,7 +264,7 @@
               <p>Data generated as of</p>
             </div>
           </div>
-        </div>
+        </div> -->
 
 
       

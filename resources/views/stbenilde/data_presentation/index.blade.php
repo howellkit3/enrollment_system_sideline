@@ -41,8 +41,10 @@ p {
 
 @section('content')
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <h3>Attendance and Grade Chart</h3>
+<div class="x_panel">
 <main>
-  <h2>Attendance and Grade Chart</h2>
+
 
   <br><br>
 
@@ -55,6 +57,7 @@ p {
   <div id="pie-chart"></div>
     
 </main>
+</div>
 
 <?php 
     $data = '["Grade", "Subject"]';

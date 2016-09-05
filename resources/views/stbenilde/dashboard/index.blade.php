@@ -30,19 +30,13 @@ $absentctr = 0;?>
 
 @section('content')
   <div class ="container">
+    <h3>Data Entered</h3>
+    <div class="x_panel">
       <div class="row top_tiles">
 
       </div>
-
-      <br>
-
       <div class="row">
          
-         <br>
-
-        <h1 class = "center" >Data Entered</h1>
-
-        <br>
         <div class="col-md-10 col-md-offset-1">
           <div class="table-responsive">
                <table id="mytable" class="display" cellspacing="0" width="100%">
@@ -97,6 +91,7 @@ $absentctr = 0;?>
             </div>
           </div>
           </div>
+      </div>
   </div>
 
 

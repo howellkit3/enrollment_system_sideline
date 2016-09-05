@@ -17,16 +17,11 @@ $ctr = 0;?>
 
 @section('content')
   <div class ="container">
-  
+    <h3>List of Account</h3>
+    <div class="x_panel">
       <div class="row">
         
         <div class="col-md-10 col-md-offset-1">
-
-            <br>
-
-            <h1>List of Accounts</h1>
-
-            <br>
 
             <div class="form-group">
               <label><I>Change Student Number to switch with another Student's Data</I></label>
@@ -52,13 +47,15 @@ $ctr = 0;?>
                       <?php $link = "" ; 
                         $disable = "disabled"; ?>
 
-                        <a href="{{$link}}" class="btn btn-success fa fa-edit"; disabled></a>
+                        <a href="{{$link}}" class="btn btn-success fa fa-check"; disabled></a>
 
                     @else
                       <?php $link = "route('stbenilde.dashboard.status',{{$value['id']}})" ; 
                       $disable = ""; ?>
 
-                      <a href="{{$link}}" class="btn btn-success fa fa-edit";></a>
+                      <a href="{{$link}}" class="btn btn-success fa fa-check";> Approve</a>
+
+
 
                     @endif
 
@@ -73,7 +70,7 @@ $ctr = 0;?>
           
             <br><br><br><br>
         </div>
-
+      </div>
   </div>
 
 

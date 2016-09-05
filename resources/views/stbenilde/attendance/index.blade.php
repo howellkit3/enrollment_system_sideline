@@ -49,11 +49,14 @@
 @section('content')
 
 <div class ="container">
+
     <div id="page-wrapper">
         <div class="row">
             <div class="col-md-12">
                 <div class="x_content">
-              
+                
+                <h3>Attendance</h3>
+
                 <div class ="row legend" >
                     <div class="col-md-6 absent ">
                         <h2>Legend</h2>
@@ -66,9 +69,7 @@
                             </div>
                         </div>
                     </div>
-                    
-                   
-
+                
                     <div class="col-md-6 absent ">
                         <h2>Total</h2>
                             <div class ="row ">
@@ -83,6 +84,7 @@
                 
                 </div>
 
+            <div class="x_panel">
                 <div>
                    
                     <div id='calendar'></div> <br>
@@ -91,6 +93,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </div>
 
