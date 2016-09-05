@@ -18,8 +18,6 @@ class attendanceController extends Controller
 		$auth = Auth::user();
 
 	 	$attendance = DB::table('tblattendance')->whereIn('studID', [$auth->active_stud_num])->get(); 
-
-	 //	print_r($attendance); exit;
 	 
 	 	$studenrolled = DB::table('tblstudenrolled')->get();
 
@@ -46,11 +44,20 @@ class attendanceController extends Controller
 
 	 	$subject_polish = array();
 		$date_polish = array();
+		$presentctr = 0;
+		$absentctr = 0;
 
 		foreach($attendance as $attendance_list){
 
 	 		$subject_raw = array_push($subject_polish,ucfirst($attendance_list->Subject));
-	 		$date_raw = array_push($date_polish,ucfirst(date("m-d-Y", strtotime($attendance_list->Date))));
+	 		
+	 		if($attendance_list->Status == 'Present'){
+
+	 			$presentctr ++;
+	 		}else{
+
+	 			$absentctr ++; 
+	 		}
 	 		 
 	 	}
 
@@ -62,35 +69,45 @@ class attendanceController extends Controller
 	 	$arr = [];
 		$arr2 = [];
 
-		foreach ($attendance as $v) {
+		foreach ($attendance as $ctr => $v) {
 		
-
 			if($v->Status =='Absent'){
 
 				$color = '#FFABAB';
+
 			}else{
+
 				$color = '#6EB5FF';
 
-	
-		// /	print_r( $v->Date); exit; 
+			}
 
 			$date = strtr( $v->Date, '/', '-');
-			$newDate = date("Y-m-d", strtotime($date));
-			$arr2[] = [
-			'title' => $v->Status,
-		
-			'start' => '2016/9/1 5:00 ',
-			'end' => '2016/9/1 23:00 ',
-			'color'  => $color,
-			'url' => '/rosebud/schedule/show/'
-			];				
-		
-		}
-	 	
-	 	$arr = json_encode($arr2);
-	 	return view('stbenilde.attendance.index',compact('attendance','auth','studfullname','studid','subject','date','arr'));		
 
-	 }
+			$newDate = date("Y-m-d", strtotime($date));
+
+			$link = '/attendance/show/' . $v->ID ;
+
+			$arr2[$ctr] = [
+
+			'title' => $v->Subject,
+			'start' => $newDate,
+			'end' => $newDate,
+			'color'  => $color,
+			'url' => $link
+			];				
+
+		} 
+
+		$arr = json_encode($arr2);
+		
+
+		return view('stbenilde.attendance.index',compact('attendance','auth','studfullname','studid','subject','date','arr','presentctr','absentctr'));	
 	}  
+
+	public function show(){ 
+
+		
+
+	}
 }
     

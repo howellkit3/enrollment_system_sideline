@@ -17,8 +17,7 @@ $ctr = 0;?>
 
 @section('content')
   <div class ="container">
-    <div class="right_col" role="main">
-      <br>
+  
       <div class="row">
         
         <div class="col-md-10 col-md-offset-1">
@@ -42,8 +41,8 @@ $ctr = 0;?>
               <input type="hidden" name="id" value="{{$auth->id}}">
 
               <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input  class="form-control" value = "{{$auth->email}}" name = "email" aria-describedby="emailHelp" disabled>
+                <label for="exampleInputEmail1">Username</label>
+                <input  class="form-control" value = "{{$auth->studnum}}" name = "email" aria-describedby="emailHelp" disabled>
                 <small id="emailHelp" class="form-text text-muted">This serve as your username</small>
               </div>
 
@@ -59,7 +58,7 @@ $ctr = 0;?>
               </div>
 
               <div class="form-group">
-                <label for="exampleInputEmail1">Registration Date</label>
+                <label for="exampleInputEmail1">Date Registered</label>
                 <input  class="form-control" name = "updated_at"  value = "{{$auth->created_at}}" aria-describedby="emailHelp" disabled>
               </div>
 
@@ -73,8 +72,9 @@ $ctr = 0;?>
 
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            <br><br><br><br>
         </div>
-    </div>
+
   </div>
 
 

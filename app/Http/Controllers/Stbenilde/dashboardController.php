@@ -75,7 +75,25 @@ class dashboardController extends Controller
 
 	 	$studname = DB::table('tblstudname')->whereIn('studID', [$auth->active_stud_num])->get();
 
-	 	return view('stbenilde.dashboard.changestudnum',compact('attendance','auth','subject'));	
+
+	 	if(empty($studname)){
+
+		 	$msg = "Student Number you entered doesnt match our records.";
+		 	flash()->error($msg);
+
+		 	$studfullname = 'Unknown Student';
+		 	$studid = '00-0000-00';
+
+		}else{
+
+
+		 	$studfullname = ucfirst($studname[0]->FirstName) . " " . ucfirst($studname[0]->MiddleName) . " " . ucfirst($studname[0]->LastName);
+		 	
+		 	$studid = $studname[0]->studID;
+
+		}
+
+	 	return view('stbenilde.dashboard.changestudnum',compact('attendance','auth','subject','studfullname','studid'));	
 
 	}  
 
@@ -85,8 +103,6 @@ class dashboardController extends Controller
 		DB::table('users')
             ->where('id',$r->id)
             ->update(['active_stud_num' => $r->studnum,'notif' => $r->notif]);
-
-           // print_r($r->notif); exit;
 		
 		$auth = Auth::user();
 
@@ -200,7 +216,181 @@ class dashboardController extends Controller
 
 	 	return view('stbenilde.dashboard.index',compact('attendance','auth','studfullname','studid','subject'));	
 
-	}  
+	} 
+
+	public function admin(){ 
+
+		$auth = Auth::user();
+
+	 	$studinfo = DB::table('tblstudname')->get();
+
+	 	$attendance = DB::table('tblattendance')->whereIn('studID', [$auth->active_stud_num])->get(); 
+
+		$account_info = DB::table('users')
+			->select('studnum')
+			->groupBy('studnum')
+			->get();  
+
+		$studnumlist=array();
+
+		foreach ($account_info as $key => $account_list) {
+
+			array_push($studnumlist,$account_list->studnum);
+
+		}
+
+		foreach ($studinfo as $key => $value) {
+
+			$name = $value->FirstName . " " . $value->LastName;
+			$studid = $value->studID; 
+
+			$studdetails[$key]['id'] = $value->ID; 
+			$studdetails[$key]['name'] = $name;
+			$studdetails[$key]['studid'] = $studid;
+			$studdetails[$key]['active'] = $studid;
+
+			if(in_array($studid , $studnumlist)){
+
+				$studdetails[$key]['status'] = 'active';
+
+			}else{
+
+				$studdetails[$key]['status'] = 'inactive';
+
+			}
+			   
+		}
+
+		$subject_polish = array();
+
+		foreach($attendance as $attendance_list){
+
+	 		$subject_raw = array_push($subject_polish,ucfirst($attendance_list->Subject));
+	 		 
+	 	}
+
+	 	$subject = array_unique($subject_polish);
+
+	 	$studname = DB::table('tblstudname')->whereIn('studID', [$auth->active_stud_num])->get(); 
+
+	 	if(empty($studname)){
+
+
+		 	$studid = '00-0000-00';
+
+		}else{
+
+
+		 	$studfullname = ucfirst($studname[0]->FirstName) . " " . ucfirst($studname[0]->MiddleName) . " " . ucfirst($studname[0]->LastName);
+		 	
+		 	$studid = $studname[0]->studID;
+
+		}
+
+
+		return view('stbenilde.dashboard.admin',compact('studdetails','auth','subject','studfullname','studid'));	
+
+	} 
+
+	public function status($id){ 
+
+		$auth = Auth::user();
+
+	 	$studinfo = DB::table('tblstudname')
+			->wherein('ID',[$id])->get(); 
+
+	 	$attendance = DB::table('tblattendance')->whereIn('studID', [$auth->active_stud_num])->get(); 
+
+		$account_info = DB::table('users')
+			->select('studnum')
+			->groupBy('studnum')
+			->get();  
+
+		$studnumlist=array();
+
+		foreach ($account_info as $key => $account_list) {
+
+			array_push($studnumlist,$account_list->studnum);
+
+		}
+
+		foreach ($studinfo as $key => $value) {
+
+			$name = $studinfo[0]->FirstName . " " . $studinfo[0]->LastName; 
+			$studid = $studinfo[0]->studID;
+			$email = $studinfo[0]->LastName . $studinfo[0]->studID . "@gmail.com";
+			$password = strtolower($studinfo[0]->LastName);
+			$datenow = date("Y-m-d h:i:s");
+
+			$studdetails[$key]['id'] = $studinfo[0]->ID; 
+			$studdetails[$key]['name'] = $name;
+			$studdetails[$key]['studid'] = $studid;
+			$studdetails[$key]['active'] = $studid;
+
+			if(!in_array($studid , $studnumlist)){
+
+				DB::table('users')->insert([
+		            'name' =>  $name,
+		            'studnum' => $studid,
+		            'email' => $email,
+		            'status' => 'guest',
+		            'active_stud_num' =>  $studid,
+		            'password' => bcrypt($password),
+		            'created_at' => $datenow,
+		            'updated_at' => $datenow
+		        ]);
+		    }
+
+		    if(in_array($studid , $studnumlist)){
+
+				$studdetails[$key]['status'] = 'active';
+
+			}else{
+
+				$studdetails[$key]['status'] = 'inactive';
+
+			}
+			   
+		}
+
+
+
+		$subject_polish = array();
+
+		foreach($attendance as $attendance_list){
+
+	 		$subject_raw = array_push($subject_polish,ucfirst($attendance_list->Subject));
+	 		 
+	 	}
+
+	 	$subject = array_unique($subject_polish);
+
+	 	$studname = DB::table('tblstudname')->whereIn('studID', [$auth->active_stud_num])->get(); 
+
+	 	if(empty($studname)){
+
+
+		 	$studid = '00-0000-00';
+
+		}else{
+
+
+		 	$studfullname = ucfirst($studname[0]->FirstName) . " " . ucfirst($studname[0]->MiddleName) . " " . ucfirst($studname[0]->LastName);
+		 	
+		 	$studid = $studname[0]->studID;
+
+		}
+
+
+		return view('stbenilde.dashboard.admin',compact('studdetails','auth','subject','studfullname','studid'));	
+
+	} 
+
+	public function delete(){ 
+
+		print_r('d'); exit; 
+
+	} 
 
 	public function test(){ 
 
@@ -211,7 +401,6 @@ class dashboardController extends Controller
 			->groupBy('studnum')
 			->get();  
 
-//			print_r($account_info); exit; 
 		$studnumlist=array();
 
 		foreach ($account_info as $key => $account_list) {
@@ -226,6 +415,7 @@ class dashboardController extends Controller
 				$studid = $value->studID;
 				$email = $value->LastName . $value->studID . "@gmail.com";
 				$password = strtolower($value->LastName);
+				$datenow = date("Y-m-d h:i:s");
 
 				if(!in_array($studid , $studnumlist)){
 				
@@ -233,8 +423,11 @@ class dashboardController extends Controller
 			            'name' =>  $name,
 			            'studnum' => $studid,
 			            'email' => $email,
+			            'status' => 'guest',
 			            'active_stud_num' =>  $studid,
 			            'password' => bcrypt($password),
+			            'created_at' => $datenow,
+			            'updated_at' => $datenow
 			        ]);
 
 			    }

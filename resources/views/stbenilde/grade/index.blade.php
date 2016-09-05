@@ -23,7 +23,7 @@ $average = 0;?>
          <br>
         <div class="col-md-10 col-md-offset-1">
           <div class="table-responsive">
-               <table id="mytable" class="display" cellspacing="0" width="100%">
+              <table id="mytable" class="display" cellspacing="0" width="100%">
                 <thead>
                   <tr>
                       <th class="column-title">Term</th>
@@ -31,6 +31,8 @@ $average = 0;?>
                       <th class="column-title">Grade</th>
                   </tr>
                 </thead>
+
+
 
                 <tbody>
                   @foreach ($grades as $grade_list)
@@ -62,8 +64,8 @@ $average = 0;?>
                   @endforeach
                   
                 </tbody>
-              </table> 
-              <br>
+              </table>
+            <br>
           </div>    
         </div>
         <div class="col-md-10 col-md-offset-1">
@@ -90,14 +92,9 @@ $average = 0;?>
 
   <script>
 
-  $(document).ready(function() {
-
+    $(document).ready(function() {
     // Setup - add a text input to each footer cell
-    $('#mytable tfoot th').each( function () {
-        var title = $(this).text();
-        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
-    } );
- 
+
     // DataTable
     var table = $('#mytable').DataTable();
  
@@ -105,15 +102,9 @@ $average = 0;?>
     table.columns().every( function () {
         var that = this;
  
-        $( 'input', this.footer() ).on( 'keyup change', function () {
-            if ( that.search() !== this.value ) {
-                that
-                    .search( this.value )
-                    .draw();
-            }
-        } );
     } );
 } );
+
   </script>
 
 @endsection

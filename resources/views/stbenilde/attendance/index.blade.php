@@ -29,6 +29,20 @@
 
     }
 
+    .absent{
+        font-size: 25px;
+    }
+
+    canvas{
+
+        border-radius: 10px;
+    }
+
+    .legend{
+        margin:5px;
+        border: solid;
+        padding: 12px;
+    }
 
   </style>
 
@@ -39,7 +53,41 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="x_content">
-                    <div id='calendar'></div>
+              
+                <div class ="row legend" >
+                    <div class="col-md-6 absent ">
+                        <h2>Legend</h2>
+                            <div class ="row ">
+                            <div class="col-md-6">
+                            <canvas id="myCanvas" width="20%" height="20%" ></canvas>  Absent 
+                            </div>
+                            <div class="col-md-6">
+                            <canvas id="myCanvas2" width="20%" height="20%" ></canvas>  Present 
+                            </div>
+                        </div>
+                    </div>
+                    
+                   
+
+                    <div class="col-md-6 absent ">
+                        <h2>Total</h2>
+                            <div class ="row ">
+                            <div class="col-md-6" style ="color:#FFABAB;">
+                            Absent: {{$absentctr}}
+                            </div>
+                            <div class="col-md-6" style ="color:#6EB5FF;">
+                            Present: {{$presentctr}}
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+
+                <div>
+                   
+                    <div id='calendar'></div> <br>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,6 +132,11 @@
         background-color: rgb(100, 100, 100);
     }
 
+    .fc-time{
+
+        display:none !important;
+    }
+
     </style>
 
 @endsection
@@ -122,6 +175,35 @@
             }
         });
     });
+
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+    var centerX = canvas.width / 2;
+    var centerY = canvas.height / 2;
+    var radius = 70;
+
+    context.beginPath();
+    context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+    context.fillStyle = '#FFABAB';
+    context.fill();
+    context.lineWidth = 5;
+    context.strokeStyle = '#003300';
+    context.stroke();
+
+    var canvas2 = document.getElementById('myCanvas2');
+    var context2 = canvas2.getContext('2d');
+    var centerX2 = canvas2.width / 2;
+    var centerY2 = canvas2.height / 2;
+    var radius2 = 70;
+
+    context2.beginPath();
+    context2.arc(centerX, centerY2, radius2, 0, 2 * Math.PI, false);
+    context2.fillStyle = '#6EB5FF';
+    context2.fill();
+    context2.lineWidth = 5;
+    context2.strokeStyle = '#003300';
+    context2.stroke();
+
 
 </script>
 

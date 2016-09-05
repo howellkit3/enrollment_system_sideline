@@ -134,6 +134,9 @@
 
                 <li class="active"><a href ="{{route('stbenilde.exam.index')}}"><i class="fa fa-pencil-square-o"></i>Exam<span class="fa fa-chevron-down"></span></a>
                 </li>
+
+                 <li class="active"><a href ="{{route('stbenilde.datapresentation.index')}}"><i class="fa fa-line-chart"></i>Data Presentation<span class="fa fa-chevron-down"></span></a>
+                </li>
               
               </ul>
             </div>
@@ -165,6 +168,12 @@
                   <li><a href="{{url('/logout')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   <li><a href="{{route('stbenilde.dashboard.changestudnum')}}"><i class="fa fa-user pull-right"></i>Switch Account</a>
                   </li>
+
+                  @if(Auth::user()->status == 'admin')
+                  <li><a href="{{route('stbenilde.dashboard.admin')}}"><i class="fa fa-laptop pull-right"></i>Admin</a>
+                  </li>
+                  @endif
+
                 </ul>
               </li>
 
