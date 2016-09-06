@@ -86,8 +86,9 @@
 
 	        <div class="col-xs-6">
 	        	
-	        	<center><h1> "Login - Error" </h1>  <br><br>
+	        	<center><h1><?php echo $error_type . " " . "- Http Error" ?></h1>  <br><br>
 
+              <img src = "{{$asset}}gentella/images/ghost.png" style  = "margin-bottom: -20px; width:45%;" ></center>
 	        </div>
 
 	        <div class="col-xs-6">
@@ -98,35 +99,17 @@
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">	        		
 					<input class="form-control" type = "hidden" value = "{{$user}}" name ="user_id">
 					<input class="form-control" type = "hidden" value = "{{ $error_type }}" name ="type">
+
+          <br><br><br>
+
 	        		<center>
 	        		<h1>Something went wrong.<br> <br> 
-	        		Tell us how you come up with this.</h1><br><br> <center>
-					  <div class="form-group row">
-					    <label for="inputEmail3" class="col-sm-2 form-control-label">Details</label>
-					    <div class="col-sm-10">
-					      <textarea class="form-control" id="exampleTextarea" rows="3" name ="desc"></textarea>
-					    </div>
-					  </div>
+	        		Please refresh your browser and Log in again.</h1><br><br> <center>
 
-
-					  <div class="form-group row">
-					    <label class="col-sm-2 form-control-label" >How often?</label>
-					    <div class="col-sm-10">
-					      <select class="form-control" id="sel1" name = "how_often">
-						    <option value = "Once" text ="Prepaid">Once</option>
-						    <option value = "Seldom">Seldom</option>
-						    <option value = "Always">Always</option>
-						  </select>
-					    </div>
-					  </div>
 
 					  <br><br>
 
-					  <div class="form-group row">
-					    <div class="col-sm-offset-2 col-sm-10">
-					      <button type="submit" class="btn btn-primary">Submit</button>
-					    </div>
-					  </div>
+
 					</form>
 
 
