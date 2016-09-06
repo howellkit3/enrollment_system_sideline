@@ -19,7 +19,7 @@ $average = 0;?>
 
 @section('content')
   <div class ="container">
-    <h3>Grades</h3>
+    <h3>Attendance</h3>
     <div class="x_panel">
       <div class="row">
          <br>
@@ -28,38 +28,22 @@ $average = 0;?>
               <table id="mytable" class="display" cellspacing="0" width="100%">
                 <thead>
                   <tr>
-                      <th class="column-title">Term</th>
+                      <th class="column-title">Name</th>
+                      <th class="column-title">Date</th>
                       <th class="column-title">Subject</th>
-                      <th class="column-title">Grade</th>
                   </tr>
                 </thead>
 
 
 
                 <tbody>
-                  @foreach ($grades as $grade_list)
-                    <?php $ctr++;
-                    $grade = $grade + $grade_list->Grade;
-
-                    ?>
-                  @if($grade_list->Grade > 3)
-                    <?php
-                      $grade_status = "danger";
-                    ?>
-                  @else
-                    <?php 
-                      $grade_status = "";
-                    ?>
-
-                  @endif
-
-                  <?php $average = $grade/$ctr;?>
+                  @foreach ($attendance as $attendance_list)
 
                   <tr class="even pointer">
-                    <td id = "{{$grade_status}}">{{$grade_list->Term}}</td>
-                    <td class="{{$grade_status}}">{{ucfirst($grade_list->Subject)}}</td>
-                    <td class="{{$grade_status}}">
-                      {{ucfirst($grade_list->Grade)}}
+                    <td >{{$attendance_list->Name}}</td>
+                    <td >{{$attendance_list->Date}}</td>
+                    <td >
+                      {{ucfirst($attendance_list->Subject)}}
                     </td>
                   </tr>
 
@@ -69,15 +53,6 @@ $average = 0;?>
               </table>
             <br>
           </div>    
-        </div>
-        <div class="col-md-10 col-md-offset-1">
-          <div class="row" style = "color:black; text-align:right;">
-            <div class="col-md-4"></div>
-            <div class="col-md-4"><h2>Average:</h2>
-            </div>
-            <div class="col-md-4"><h2>  {{round($average)}} %</h2>
-            </div>
-          </div>
         </div>
       </div>
   </div>

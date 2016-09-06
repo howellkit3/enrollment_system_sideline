@@ -63,19 +63,10 @@ p {
     $data = '["Grade", "Subject"]';
    
     foreach ($grade as $key => $value) {
-        //print_r($value->Subject); exit;
+
         $data .= ',["' . $value->Subject .'",'. $value->Grade .']';
 
     }
-   //print_r($data); exit; 
- // $data = ("['Grade', 'Subject'],
- //    ['Sun',  1050],
- //    ['Mon',  1370],
- //    ['Tue',  660],
- //    ['Wed',  1030],
- //    ['Thu',  1000],
- //    ['Fri',  1170],
- //    ['Sat',  660] ");
 
 ?>
 @endsection 
@@ -119,7 +110,7 @@ function drawCharts() {
     },
     vAxis: {
       minValue: 0,
-      maxValue: 100,
+      maxValue: 5,
       baselineColor: '#DDD',
       gridlines: {
         color: '#DDD',

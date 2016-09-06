@@ -81,17 +81,19 @@ class attendanceController extends Controller
 
 			}
 
-			$date = strtr( $v->Date, '/', '-');
+			
 
-			$newDate = date("Y-m-d", strtotime($date));
+			$newDate = date("Y-m-d", strtotime($v->Date));
+
+			$date = strtr( $newDate, '/', '-');
 
 			$link = '/attendance/show/' . $v->ID ;
 
 			$arr2[$ctr] = [
 
 			'title' => $v->Subject,
-			'start' => $newDate,
-			'end' => $newDate,
+			'start' => $date,
+			'end' => $date,
 			'color'  => $color,
 			'url' => $link
 			];				
@@ -104,9 +106,52 @@ class attendanceController extends Controller
 		return view('stbenilde.attendance.index',compact('attendance','auth','studfullname','studid','subject','date','arr','presentctr','absentctr'));	
 	}  
 
-	public function show(){ 
+	public function show($id){ 
 
-		
+		$auth = Auth::user();
+
+	 	$attendance = DB::table('tblattendance')->whereIn('ID', [$id])->get(); 
+
+	 	$attendance_array = DB::table('tblattendance')
+	 		->whereIn('studID', [$auth->active_stud_num])->get();
+
+
+	 	$subject_polish = array();
+
+	 	foreach($attendance_array as $attendance_list){
+
+	 		$subject_raw = array_push($subject_polish,ucfirst($attendance_list->Subject));
+	 		 
+	 	}
+
+	 	$studenrolled = DB::table('tblstudenrolled')->get();
+
+	 	$studname = DB::table('tblstudname')->whereIn('studID', [$auth->active_stud_num])->get();
+
+	 	if(empty($studname)){
+
+		 	$msg = "Student Number you entered doesnt match our records.";
+		 	flash()->error($msg);
+
+		 	$studfullname = 'Unknown Student';
+		 	$studid = '00-0000-00';
+
+		}else{
+
+			$msg = "Welcome!";
+		 	flash()->success($msg);
+
+		 	$studfullname = ucfirst($studname[0]->FirstName) . " " . ucfirst($studname[0]->MiddleName) . " " . ucfirst($studname[0]->LastName);
+		 	
+		 	$studid = $studname[0]->studID;
+
+		}
+
+	 	$subject_polish = array();
+
+	 	$subject = array_unique($subject_polish); 
+
+	 	return view('stbenilde.attendance.show',compact('attendance','auth','studfullname','studid','subject'));
 
 	}
 }

@@ -17,6 +17,7 @@ $total = 0;?>
   </style>
 
 @section('content')
+
   <div class ="container">
     <div class="x_panel">
        <h3>Exams</h3>
@@ -70,7 +71,7 @@ $total = 0;?>
             </div>
             <div class="col-md-4"><h2>Total</h2>
             </div>
-            <div class="col-md-4"><h2>{{($ctr = 0) ? round($total/$ctr,2) : 0 }} %</h2>
+            <div class="col-md-4"><h2>{{($ctr != 0) ? round($total/$ctr,2) : 0 }} %</h2>
             </div>
           </div>
         </div>

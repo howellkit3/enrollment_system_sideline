@@ -24,7 +24,7 @@ $ctr = 0;?>
         <div class="col-md-10 col-md-offset-1">
 
             <div class="form-group">
-              <label><I>Change Student Number to switch with another Student's Data</I></label>
+              <label><I>Check all User account you want to approve</I></label>
             </div>
 
             <table class="table table-striped">
@@ -50,7 +50,7 @@ $ctr = 0;?>
                         <a href="{{$link}}" class="btn btn-success fa fa-check"; disabled></a>
 
                     @else
-                      <?php $link = "route('stbenilde.dashboard.status',{{$value['id']}})" ; 
+                      <?php $link = "status/{$value['id']}" ; 
                       $disable = ""; ?>
 
                       <a href="{{$link}}" class="btn btn-success fa fa-check";> Approve</a>

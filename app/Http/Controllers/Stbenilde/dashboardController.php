@@ -145,7 +145,7 @@ class dashboardController extends Controller
 
 	 	$subject = array_unique($subject_polish); 
 
-	 	return view('stbenilde.dashboard.index',compact('attendance','auth','studfullname','studid','subject'));	
+	 	return redirect()->back();
 
 	}  
 
@@ -294,6 +294,7 @@ class dashboardController extends Controller
 
 	public function status($id){ 
 
+
 		$auth = Auth::user();
 
 	 	$studinfo = DB::table('tblstudname')
@@ -328,7 +329,7 @@ class dashboardController extends Controller
 			$studdetails[$key]['active'] = $studid;
 
 			if(!in_array($studid , $studnumlist)){
-
+				
 				DB::table('users')->insert([
 		            'name' =>  $name,
 		            'studnum' => $studid,
@@ -381,8 +382,7 @@ class dashboardController extends Controller
 
 		}
 
-
-		return view('stbenilde.dashboard.admin',compact('studdetails','auth','subject','studfullname','studid'));	
+		return redirect()->back();
 
 	} 
 

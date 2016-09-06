@@ -17,44 +17,35 @@ $total = 0;?>
   </style>
 
 @section('content')
+<br>
   <div class ="container">
-    <h3>Quizzes</h3>
     <div class="x_panel">
+       <h3>Billing</h3>
       <div class="row">
          <br>
         <div class="col-md-10 col-md-offset-1">
           <div class="table-responsive">
                <table id="mytable" class="display" cellspacing="0" width="100%">
-               
                 <thead>
                   <tr>
-                      <th class="column-title">Type</th>
-                      <th class="column-title">Subject</th>
-                      <th class="column-title">Score</th>
-                      <th class="column-title">Total</th>
-                      <th class="column-title">Average</th>
+                      <th class="column-title">Billing Number</th>
                       <th class="column-title">Date</th>
+                      <th class="column-title">Amount</th>
+                      <th class="column-title">Current Balance</th>
                   </tr>
                 </thead>
 
                 <tbody>
-                  @foreach ($quiz as $quiz_list)
+                  @foreach ($billing as $billing_list)
                     <?php $ctr++;?>
 
                 
                   <tr class="even pointer">
-                    <td id = "">{{$quiz_list->type}}</td>
-                    <td id = "">{{$quiz_list->Subject}}</td>
-                    <td id = "">{{$quiz_list->score}}</td>
-                    <td id = "">{{$quiz_list->Total}}</td>
-                    <td>
-                    <?php
-                      $ave = ($quiz_list->score / $quiz_list->Total) * 100 ; 
-                      $total = $total + $ave;
-                    ?>
-                    {{round($ave,2)}} %
-                    </td>
-                    <td id = "">{{$quiz_list->Date}}</td>
+                    <td id = "">{{$billing_list->BillingNo}}</td>
+                    <td id = "">{{$billing_list->Date}}</td>
+                    <td id = "">{{$billing_list->Amount}}</td>
+                    <td id = "">{{$billing_list->CurrentBalance}}</td>
+                    
                   
                   </tr>
 
@@ -65,16 +56,7 @@ $total = 0;?>
               <br>
           </div>    
         </div>
-        <div class="col-md-10 col-md-offset-1">
-          <div class="row" style = "color:black; text-align:right;">
-            <div class="col-md-4">
-            </div>
-            <div class="col-md-4"><h2>Total</h2>
-            </div>
-            <div class="col-md-4"><h2>{{($ctr != 0) ? round($total/$ctr,2) : 0 }} %</h2>
-            </div>
-          </div>
-        </div>
+
       </div>
   </div>
 
@@ -99,6 +81,7 @@ $total = 0;?>
     // Apply the search
     table.columns().every( function () {
         var that = this;
+ 
     } );
 } );
   </script>

@@ -160,15 +160,15 @@
 
                  <li class="active"><a href ="{{route('stbenilde.datapresentation.index')}}"><i class="fa fa-line-chart"></i>Data Presentation<span class="fa fa-chevron-down"></span></a>
                 </li>
+
+                <li class="active"><a href ="{{route('stbenilde.billing.index')}}"><i class="fa fa-money"></i>Billing<span class="fa fa-chevron-down"></span></a>
+                </li>
               
               </ul>
             </div>
 
           </div>
-          <!-- /sidebar menu -->
 
-
-          <!-- /menu footer buttons -->
         </div>
       </div>
 
