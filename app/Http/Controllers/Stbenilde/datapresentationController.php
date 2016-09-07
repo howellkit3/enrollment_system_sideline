@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Contracts\Auth\Guard;
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
+use Carbon\Carbon;http://dominicandal.esy.es/dashboard
 use App\Http\Models\Stbenilde\Tblattendance as Tblattendance;
 use Auth;
 use DB;
@@ -22,10 +22,10 @@ class datapresentationController extends Controller
 		$auth = Auth::user();
 
 		$attendance_array = DB::table('tblattendance')
-	 		->whereIn('studID', [$auth->studnum])->get();
+	 		->whereIn('studID', [$auth->active_stud_num])->get();
 
 	 	$grade = DB::table('tblgrades')
-	 		->whereIn('studID', [$auth->studnum])->get();
+	 		->whereIn('studID', [$auth->active_stud_num])->get();
 	 		
 	 	$subject_polish = array();
 		$date_polish = array();
@@ -47,6 +47,7 @@ class datapresentationController extends Controller
 
 		foreach($attendance_array as $attendance_list){
 
+
 	 		$subject_raw = array_push($subject_polish,ucfirst($attendance_list->Subject));
 
 	 		if($attendance_list->Status == 'Present'){
@@ -66,9 +67,11 @@ class datapresentationController extends Controller
 
 	 	}
 
+
+
 	 	$subject = array_unique($subject_polish); 
 		
-	 	$arr = "['Day', 'Page Views'],";
+	 	$arr = "['Day', 'Attendance'],";
 
 
 	 //	print_r($arr); exit;
