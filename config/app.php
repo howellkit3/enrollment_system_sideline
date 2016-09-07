@@ -151,10 +151,10 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        stbenilde\Providers\AppServiceProvider::class,
+        stbenilde\Providers\AuthServiceProvider::class,
+        stbenilde\Providers\EventServiceProvider::class,
+        stbenilde\Providers\RouteServiceProvider::class,
         'Laracasts\Flash\FlashServiceProvider',
 
     ],

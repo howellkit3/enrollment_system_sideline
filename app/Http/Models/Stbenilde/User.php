@@ -1,4 +1,4 @@
-<?php namespace App\Http\Models\plumeria;
+<?php namespace stbenilde\Http\Models\plumeria;
 
 use Illuminate\Database\Eloquent\Model;
 

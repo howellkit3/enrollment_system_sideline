@@ -1,11 +1,11 @@
-<?php namespace App\Http\Controllers\stbenilde;
+<?php namespace stbenilde\Http\Controllers\stbenilde;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
+use stbenilde\Http\Requests;
 use Illuminate\Contracts\Auth\Guard;
-use App\Http\Controllers\Controller;
+use stbenilde\Http\Controllers\Controller;
 use Carbon\Carbon;http://dominicandal.esy.es/dashboard
-use App\Http\Models\Stbenilde\Tblattendance as Tblattendance;
+use stbenilde\Http\Models\Stbenilde\Tblattendance as Tblattendance;
 use Auth;
 use DB;
 

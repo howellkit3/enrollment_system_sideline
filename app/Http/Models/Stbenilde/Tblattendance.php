@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Http\Models\Stbenilde;
+namespace stbenilde\Http\Models\Stbenilde;
 
 use Illuminate\Database\Eloquent\Model;
 
