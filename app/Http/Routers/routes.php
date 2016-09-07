@@ -38,5 +38,9 @@ $this->group(['middleware' => ['web','auth','validateBackHistory'],'namespace' =
 	$this->group(['prefix' => 'billing'],function(){
 		$this->get('/',['as' => 'stbenilde.billing.index','uses' => 'billingController@index']);
 	});
+	
+	$this->group(['prefix' => 'websync'],function(){
+		$this->get('/',['as' => 'stbenilde.websync.index','uses' => 'webSyncController@index']);
+	});
 
 }); 
