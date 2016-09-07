@@ -26,7 +26,7 @@ require __DIR__.'/../vendor/autoload.php';
 | by a request. The Artisan "optimize" is used to create this file.
 |
 */
-ini_set('xdebug.max_nesting_level', 200);
+//ini_set('xdebug.max_nesting_level', 200);
 
 $compiledPath = __DIR__.'/cache/compiled.php';
 
