@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace stbenilde\Events;
 
 abstract class Event
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http;
+namespace stbenilde\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -25,11 +25,11 @@ class Kernel extends HttpKernel
     protected $middlewareGroups = [
     
         'web' => [
-            \App\Http\Middleware\EncryptCookies::class,
+            \stbenilde\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \App\Http\Middleware\VerifyCsrfToken::class,
+            \stbenilde\Http\Middleware\VerifyCsrfToken::class,
         ],
 
         'api' => [
@@ -45,11 +45,11 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \App\Http\Middleware\Authenticate::class,
+        'auth' => \stbenilde\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest' => \stbenilde\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'validateBackHistory' => 'App\Http\Middleware\ValidateBackHistory',
+        'validateBackHistory' => 'stbenilde\Http\Middleware\ValidateBackHistory',
     ];
 }

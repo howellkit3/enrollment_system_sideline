@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace stbenilde\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

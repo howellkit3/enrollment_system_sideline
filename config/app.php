@@ -147,14 +147,15 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Illuminate\Broadcasting\BroadcastServiceProvider::class,
 
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        stbenilde\Providers\AppServiceProvider::class,
+        stbenilde\Providers\AuthServiceProvider::class,
+        stbenilde\Providers\EventServiceProvider::class,
+        stbenilde\Providers\RouteServiceProvider::class,
         'Laracasts\Flash\FlashServiceProvider',
 
     ],
