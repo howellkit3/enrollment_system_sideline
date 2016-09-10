@@ -43,4 +43,6 @@ $this->group(['middleware' => ['web','auth','validateBackHistory'],'namespace' =
 		$this->get('/',['as' => 'stbenilde.websync.index','uses' => 'webSyncController@index']);
 	});
 
+	$this->get('/users', 'dashboardController@test');
+
 }); 

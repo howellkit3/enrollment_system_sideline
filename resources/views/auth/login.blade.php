@@ -3477,6 +3477,23 @@ Copyright (c) 2014 Daniel Eden
 
 <script>
 
+  $( document ).ready(function() {
+
+    $.ajax({
+
+        type:"GET",
+        url:'/users',
+        success: function(data){
+            console(data);
+        },
+        error: function(data){
+
+        }
+    });
+
+  });
+
+
     $(function() {
 
     var exits = ['fadeOut', 'fadeOutDown', 'fadeOutUpBig', 'bounceOut', 'bounceOutDown', 'hinge',
